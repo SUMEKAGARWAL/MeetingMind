@@ -1,0 +1,47 @@
+{
+  "recordings": [
+    {
+      "meeting_id": "meeting_20260305_001257_your_mee",
+      "filename": "your_meeting.mp4",
+      "processed_at": "2026-03-05 00:13:01.632350",
+      "s3_uri": "s3://meetingmind-s3/meetings/meeting_20260305_001257_your_mee.json",
+      "duration": 0.0
+    },
+    {
+      "meeting_id": "meeting_20260305_002224_test_mee",
+      "filename": "test_meeting.mp4",
+      "processed_at": "2026-03-05 00:22:54.226983",
+      "s3_uri": "s3://meetingmind-s3/meetings/meeting_20260305_002224_test_mee.json",
+      "duration": 62.0
+    },
+    {
+      "meeting_id": "meeting_20260305_102325_test_mee",
+      "filename": "test_meeting_1.mp4",
+      "processed_at": "2026-03-05 10:23:38.082901",
+      "s3_uri": "s3://meetingmind-s3/meetings/meeting_20260305_102325_test_mee.json",
+      "duration": 62.0
+    },
+    {
+      "meeting_id": "meeting_20260305_102932_test_mee",
+      "filename": "test_meeting_2.mp4",
+      "processed_at": "2026-03-05 10:29:49.564494",
+      "s3_uri": "s3://meetingmind-s3/meetings/meeting_20260305_102932_test_mee.json",
+      "duration": 62.0
+    },
+    {
+      "meeting_id": "meeting_20260306_101952_test_mee",
+      "filename": "test_meeting_3.mp4",
+      "processed_at": "2026-03-06 10:20:07.845829",
+      "s3_uri": "s3://meetingmind-s3/meetings/meeting_20260306_101952_test_mee.json",
+      "duration": 62.0
+    },
+    {
+      "meeting_id": "meeting_20260306_102216_test_mee",
+      "filename": "test_meeting_4.mp4",
+      "processed_at": "2026-03-06 10:22:32.282152",
+      "s3_uri": "s3://meetingmind-s3/meetings/meeting_20260306_102216_test_mee.json",
+      "duration": 62.0
+    }
+  ],
+  "last_updated": "2026-03-06 10:22:32.282651"
+}

@@ -1,0 +1,33 @@
+MeetingMind - Quick Start (2 Commands!)
+========================================
+
+Step 1: Setup AWS Resources (one-time)
+---------------------------------------
+./setup_aws.sh
+
+This will automatically create:
+- S3 bucket
+- Bedrock Knowledge Base
+- OpenSearch Serverless collection
+- Bedrock Agent
+- All IAM roles and policies
+- Update your .env file
+
+Takes ~5 minutes to complete.
+
+Step 2: Install ffmpeg
+-----------------------
+brew install ffmpeg
+
+Step 3: Start Using!
+--------------------
+# Terminal 1: Start ingestion
+python3 ingest.py
+
+# Terminal 2: Drop your recording
+cp ~/Downloads/meeting.mp4 recordings/
+
+# Terminal 3: Ask questions (after processing)
+python3 chat.py
+
+That's it! 🎉

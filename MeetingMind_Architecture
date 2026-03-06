@@ -1,0 +1,60 @@
+digraph "MeetingMind Financial AI - Architecture" {
+	graph [bgcolor=white fontcolor="#2D3436" fontname="Sans-Serif" fontsize=16 label="MeetingMind Financial AI - Architecture" nodesep=0.8 pad=0.5 rankdir=TB ranksep=1.0 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=12 height=1.2 imagescale=true labelloc=b shape=box style=rounded width=2.0]
+	edge [color="#7B8894" fontsize=10]
+	"3f4c5c278742400cb57b2304da7e457d" [label="Women in Finance
+Professionals" height=2.3 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/onprem/client/users.png" shape=none]
+	subgraph "cluster_Frontend - Streamlit Web UI" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="Frontend - Streamlit Web UI" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"92efdabde9254b83925f18b3f5139b4e" [label="Streamlit App
+(Upload & Chat)" height=2.3 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/programming/language/python.png" shape=none]
+	}
+	subgraph "cluster_Backend Processing Pipeline" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="Backend Processing Pipeline" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		subgraph "cluster_Video Processing" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=12 label="Video Processing" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			"79d6596ade134819b30d6c97e893113b" [label="Video Pipeline
+(FFmpeg)" height=2.3 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/programming/language/python.png" shape=none]
+			ea1d6675f2ec43b883d504980b8e86fa [label="Audio Extraction
+(Whisper Transcription)" height=2.3 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/programming/language/python.png" shape=none]
+			daf95312f3a44f0393d8bbf08d6c4e6f [label="Frame Extraction
+(Keyframes)" height=2.3 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/programming/language/python.png" shape=none]
+			"74807a9866cf49aeb998366ec499b3e3" [label="AWS Bedrock
+Nova Pro Vision
+(Describe Frames)" height=2.7 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/aws/ml/bedrock.png" shape=none]
+		}
+		subgraph "cluster_Data Processing" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=12 label="Data Processing" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			b18555da237642db9ffc5d5e8ad4a213 [label="Content Merger
+(Audio + Visual)" height=2.3 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/programming/language/python.png" shape=none]
+			f57445b6825d41009fbc05b9474eba37 [label="Manifest Manager
+(Track Recordings)" height=2.3 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/programming/language/python.png" shape=none]
+		}
+	}
+	subgraph "cluster_AWS Cloud Services" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="AWS Cloud Services" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		f64697b0c6c14f14ad1933d1d0c68e3d [label="S3 Bucket
+(meetingmind-s3)
+JSON Documents" height=2.7 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/aws/storage/simple-storage-service-s3.png" shape=none]
+		a51ff384730b47e680717df4137b337a [label="Bedrock Knowledge Base
+(Vector Search)" height=2.3 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/aws/ml/bedrock.png" shape=none]
+		"2f013878877d4041827dc3bc66dda5dd" [label="Bedrock Agent
+(Q&A Assistant)" height=2.3 image="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/resources/aws/ml/bedrock.png" shape=none]
+	}
+	"3f4c5c278742400cb57b2304da7e457d" -> "92efdabde9254b83925f18b3f5139b4e" [label="Upload .mp4
+Financial Meeting" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"92efdabde9254b83925f18b3f5139b4e" -> "79d6596ade134819b30d6c97e893113b" [label="Process Video" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"79d6596ade134819b30d6c97e893113b" -> ea1d6675f2ec43b883d504980b8e86fa [label="Extract Audio" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"79d6596ade134819b30d6c97e893113b" -> daf95312f3a44f0393d8bbf08d6c4e6f [label="Extract Frames" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	ea1d6675f2ec43b883d504980b8e86fa -> b18555da237642db9ffc5d5e8ad4a213 [label=Transcript dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	daf95312f3a44f0393d8bbf08d6c4e6f -> "74807a9866cf49aeb998366ec499b3e3" [label=Frames dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"74807a9866cf49aeb998366ec499b3e3" -> b18555da237642db9ffc5d5e8ad4a213 [label="Visual Descriptions" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	b18555da237642db9ffc5d5e8ad4a213 -> f64697b0c6c14f14ad1933d1d0c68e3d [label="Unified JSON
+Document" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	b18555da237642db9ffc5d5e8ad4a213 -> f57445b6825d41009fbc05b9474eba37 [label=Update dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	f64697b0c6c14f14ad1933d1d0c68e3d -> a51ff384730b47e680717df4137b337a [label="Sync Data" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	a51ff384730b47e680717df4137b337a -> "2f013878877d4041827dc3bc66dda5dd" [label="RAG Context" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"92efdabde9254b83925f18b3f5139b4e" -> "2f013878877d4041827dc3bc66dda5dd" [label="User Query" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"2f013878877d4041827dc3bc66dda5dd" -> "92efdabde9254b83925f18b3f5139b4e" [label="AI Response" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"92efdabde9254b83925f18b3f5139b4e" -> "3f4c5c278742400cb57b2304da7e457d" [label="Financial Insights" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+}
